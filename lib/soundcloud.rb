@@ -166,7 +166,14 @@ class Soundcloud
 private
   def handle_response(refreshing_enabled=true, &block)
     response = block.call
-    if response && !response.success?
+
+    # Crazy code to deal with responses coming from CacheBar's Redis cache
+    # They have no headers, so their status code ends up being zero.
+    if response.code.zero?
+      response = JSON.parse(response)
+    end
+
+    if response && response.respond_to?(:success?) && !response.success?
       if response.code == 401 && refreshing_enabled && options_for_refresh_flow_present?
         exchange_token
         # TODO it should return the original
