@@ -13,12 +13,11 @@ Gem::Specification.new do |s|
   s.email       = ["johannes@soundcloud.com"]
   s.homepage    = "http://dev.soundcloud.com"
   s.summary     = "A simple Soundcloud API wrapper"
-  s.description = "A simple Soundcloud API wrapper based of httparty, multipart-post, httmultiparty"
+  s.description = "A simple Soundcloud API wrapper based of httparty"
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency 'httparty',      '~> 0.7.3'
-  s.add_dependency 'httmultiparty', '~> 0.3.0'
+  s.add_dependency 'httparty',      '~> 0.7.7'
   s.add_dependency 'hashie'
 
   s.add_development_dependency "rspec", '~> 2.5.0'
