@@ -88,6 +88,8 @@ class Soundcloud
     :on_exchange_token => lambda {}
   }
 
+  caches_api_responses :host => api_host, :key_name => "soundcloud", :expire_in => 7200
+
   attr_accessor :options
   headers({"User-Agent" => USER_AGENT})
 
